@@ -21,11 +21,11 @@
 	
 	</update>
 	
-	<delete id="deleteUserInfo" parameterType="String">
+	<delete id="deleteUserInfo" parameterType="kr.or.goc.animal.animalVO">
 		
 		delete from user 
-			where phone_num = #{aaaa},
-				  password = #{aaaa}
+			where phone_num = #{phoneNum},
+				  password = #{password}
 	
 	</delete>
 	
