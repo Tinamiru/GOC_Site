@@ -3,10 +3,11 @@ package kr.co.goc.animal.animalController;
 import kr.co.goc.animal.animalService.AnimalServiceImpl;
 
 public class AniamlController {
-	private AnimalServiceImpl animalSer;
+	
+	private AnimalServiceImpl animalService;
 	
 	public AniamlController() {
-		animalSer = AnimalServiceImpl.getInstance();
+		animalService = AnimalServiceImpl.getInstance();
 	}
 }
 

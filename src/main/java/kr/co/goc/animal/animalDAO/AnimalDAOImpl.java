@@ -23,45 +23,59 @@ public class AnimalDAOImpl implements IAnimalDAO{
 	}
 
 	@Override
-	public int insertUserInfo(AnimalVO av) {
-		sqlSession.insert("",av);
-		return 0;
+	public int insertUserInfo(AnimalVO vo) {
+		int cnt = sqlSession.insert("users.insertUserInfo",vo);
+		if (cnt > 0) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		return cnt;
 	}
 
 	@Override
-	public int updateUserInfo(AnimalVO av) {
-		sqlSession.update("",av);
-		return 0;
+	public int updateUserInfo(AnimalVO vo) {
+		int cnt = sqlSession.update("users.updateUserInfo",vo);
+		if (cnt > 0) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		return cnt;
 	}
 
 	@Override
-	public int deleteUserInfo(String phoneNum, String password) {
-		sqlSession.delete("",phoneNum);
-		return 0;
+	public int deleteUserInfo(AnimalVO vo) {
+		int cnt = sqlSession.delete("users.deleteUserInfo",vo);
+		if (cnt > 0) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		return cnt;
 	}
 
 	@Override
-	public List<AnimalVO> searchMyInfo(String phoneNum, String password) {
-		//parameter를 list 하나로 받는걸로 바꾸겠습니다.
-		List<AnimalVO> infoList  = sqlSession.selectOne("naver.com",password);
+	public List<AnimalVO> searchMyInfo(AnimalVO vo) {
+		List<AnimalVO> infoList  = sqlSession.selectOne("users.selectOneUserInfo",vo);
 		return infoList;
 	}
 
 	@Override
-	public boolean phoneNumDuplCheck(String phoneNum) {
-		boolean check = sqlSession.selectOne("",phoneNum);
-		return check;
+	public int phoneNumDuplCheck(String phoneNum) {
+		int isExist = sqlSession.selectOne("users.phoneNumDuplCheck",phoneNum);
+		return isExist;
 	}
 
 	@Override
-	public boolean nicknameDuplCheck(String nickname) {
-		boolean check = sqlSession.selectOne("",nickname);
-		return check;
+	public int nicknameDuplCheck(String nickname) {
+		int isExist = sqlSession.selectOne("users.nickNameDuplCheck",nickname);
+		return isExist;
 	}
 
 	@Override
 	public List<AnimalVO> selectAllInfo() {
-		List<AnimalVO> infoList = sqlSession.selectList("member.getMemberAll");		
+		List<AnimalVO> infoList = sqlSession.selectList("users.selectAllInfo");		
 		return infoList;
 	}
 }
