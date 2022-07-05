@@ -57,7 +57,7 @@ public class AnimalDAOImpl implements IAnimalDAO{
 
 	@Override
 	public List<AnimalVO> searchMyInfo(AnimalVO vo) {
-		List<AnimalVO> infoList  = sqlSession.selectOne("users.selectOneUserInfo",vo);
+		List<AnimalVO> infoList  = sqlSession.selectOne("users.searchMyInfo",vo);
 		return infoList;
 	}
 
@@ -69,7 +69,7 @@ public class AnimalDAOImpl implements IAnimalDAO{
 
 	@Override
 	public int nicknameDuplCheck(String nickname) {
-		int isExist = sqlSession.selectOne("users.nickNameDuplCheck",nickname);
+		int isExist = sqlSession.selectOne("users.nicknameDuplCheck",nickname);
 		return isExist;
 	}
 
