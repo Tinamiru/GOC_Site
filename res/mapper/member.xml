@@ -31,13 +31,13 @@
 	
 	<select id="searchMyInfo" resultType="kr.or.goc.animal.animalVO">
 		
-		select
+		select  
 			  phone_num as phoneNum
 		      ,password as password
 		from user
 	
 	</select>
-	
+	//o
 	<select id="phoneNumDuplCheck" parameterType="String" resultType="int">
 		
 		select count(*) as cnt 
@@ -46,6 +46,7 @@
 	
 	</select>
 	
+	//o
 	<select id="nicknameDuplCheck" parameterType="String" resultType="int">
 		
 		select count(*) as cnt 
@@ -54,6 +55,8 @@
 	
 	</select>
 	
+	
+	//o
 	<select id="selectAllInfo" resultType="kr.or.goc.animal.animalVO">
 	
 	  select user_num,
